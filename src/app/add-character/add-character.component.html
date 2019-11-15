@@ -1,1 +1,74 @@
-<p>add-character works!</p>
+<h1>Create a character</h1>
+<form [formGroup]="characterForm" (ngSubmit)="onSubmit()">
+    <p>
+        <mat-form-field>
+            <input matInput placeholder="Character Name" formControlName="Name" [(ngModel)]="characterModel.name"
+                type="text" name="Name" />
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <mat-select formControlName="race" name="raceSelect" [(ngModel)]="raceModel">
+                <mat-option *ngFor="let race of (raceList| async)" [value]="race">{{race.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <mat-select formControlName="class" name="classSelect" [(ngModel)]="classModel">
+                <mat-option *ngFor="let class of (classList| async)" [value]="class">{{class.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <input matInput placeholder="Alignment" formControlName="Alignment" [(ngModel)]="characterModel.alignment"
+                type="text" name="Alignment" />
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <input matInput placeholder="Strenght" formControlName="Strenght" [(ngModel)]="characterModel.strenght"
+                type="text" name="Strenght" />
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <input matInput placeholder="Dexterity" formControlName="Dexterity" [(ngModel)]="characterModel.dexterity"
+                type="text" name="Dexterity" />
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <input matInput placeholder="Constitution" formControlName="Constitution" [(ngModel)]="characterModel.constitution"
+                type="text" name="Constitution" />
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <input matInput placeholder="Wisdom" formControlName="Wisdom" [(ngModel)]="characterModel.wisdom"
+                type="text" name="Wisdom" />
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <input matInput placeholder="Intelligence" formControlName="Intelligence" [(ngModel)]="characterModel.intelligence"
+                type="text" name="Intelligence" />
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <input matInput placeholder="Charisma" formControlName="Charisma" [(ngModel)]="characterModel.charisma"
+                type="text" name="Charisma" />
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <mat-select formControlName="equipment" name="equipmentSelect" [(ngModel)]="equipmentModel">
+                <mat-option *ngFor="let equipment of (equipmentList| async)" [value]="equipment">{{equipment.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </p>
+
+    <p><button mat-raised-button color="primary" type="submit">Submit</button></p>
+</form>

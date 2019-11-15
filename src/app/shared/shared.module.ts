@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule } from '@angular/material';
 import { MatSidenavModule, MatListModule, MatDatepickerModule } from '@angular/material';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -20,7 +20,10 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-b
     MatDatepickerModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    FormsModule,
+    FlexLayoutModule,
+    MatSelectModule
   ],
   exports: [
     MatFormFieldModule,
@@ -29,7 +32,12 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-b
     MatSidenavModule,
     MatListModule,
     MatDatepickerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
+    FormsModule,
+    FlexLayoutModule,
+    MatSelectModule
   ]
 })
 export class SharedModule { }

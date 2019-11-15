@@ -8,16 +8,17 @@ import { LoginComponent } from './login/login.component';
 import { CharacterListComponent } from './character-list/character-list.component';
 import { AddCharacterComponent } from './add-character/add-character.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
-const appRoutes: Routes = [
+const appRoutes: Routes = ([
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'list', component: CharacterListComponent },
   { path: 'add', component: AddCharacterComponent },
   { path: 'user', component: UserListComponent }
-];
+]);
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     SharedModule,
-    RouterModule.forRoot(appRoutes, { enableTracing: true })
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes, { enableTracing: false })
   ],
   providers: [],
   bootstrap: [AppComponent]
