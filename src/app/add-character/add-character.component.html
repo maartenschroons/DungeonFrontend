@@ -40,8 +40,8 @@
     </p>
     <p>
         <mat-form-field>
-            <input matInput placeholder="Constitution" formControlName="Constitution" [(ngModel)]="characterModel.constitution"
-                type="text" name="Constitution" />
+            <input matInput placeholder="Constitution" formControlName="Constitution"
+                [(ngModel)]="characterModel.constitution" type="text" name="Constitution" />
         </mat-form-field>
     </p>
     <p>
@@ -52,8 +52,8 @@
     </p>
     <p>
         <mat-form-field>
-            <input matInput placeholder="Intelligence" formControlName="Intelligence" [(ngModel)]="characterModel.intelligence"
-                type="text" name="Intelligence" />
+            <input matInput placeholder="Intelligence" formControlName="Intelligence"
+                [(ngModel)]="characterModel.intelligence" type="text" name="Intelligence" />
         </mat-form-field>
     </p>
     <p>
@@ -65,10 +65,10 @@
     <p>
         <mat-form-field>
             <mat-select formControlName="equipment" name="equipmentSelect" [(ngModel)]="equipmentModel">
-                <mat-option *ngFor="let equipment of (equipmentList| async)" [value]="equipment">{{equipment.name}}</mat-option>
+                <mat-option *ngFor="let equipment of (equipmentList| async)" [value]="equipment">{{equipment.name}}
+                </mat-option>
             </mat-select>
         </mat-form-field>
     </p>
-
     <p><button mat-raised-button color="primary" type="submit">Submit</button></p>
 </form>

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
+import { DefaultValueAccessor } from '@angular/forms';
 
 
 
@@ -8,7 +9,8 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    DefaultValueAccessor
   ]
 })
 export class AddCharacterModule { }
