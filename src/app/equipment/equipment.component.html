@@ -1,0 +1,8 @@
+
+<input type="text" class="form-control" id="EquipmentName" placeholder="Equipment" #name>
+    <p></p>
+    <button (click)="findEquipmentList(name.value)">Search Equipment by Name</button>
+    <button (click)="findEquipmentListCat(name.value)">Search Equipment by Category</button>
+
+ <p></p>
+<li *ngFor="let equipment of (equipmentListByName | async)">{{equipment.index}}| Name: {{equipment.name}}, Category: {{equipment.equipment_category}}, Weight: {{equipment.weight}}</li>
