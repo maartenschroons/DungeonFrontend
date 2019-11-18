@@ -23,13 +23,13 @@ export class EquipmentService {
         for (let i = 0; i < result.results.length; i++) {
           this.equipmentList[i] = this.getEquipmentById(result.results[i].url);
         }
-      })
+      });
     return of(this.equipmentList);
   }
 
   getEquipmentById(url: string): Equipment {
-    let equipment = new Equipment(0, "", "", "", "", 0);
-    // this.http.get<Equipment>(url).subscribe(result => {console.log(result)});
+    const equipment = new Equipment(0, "", "", "", "", 0);
+    
     this.http.get<Equipment>(url).subscribe(
       result => {
         equipment.index = result.index;
@@ -44,8 +44,8 @@ export class EquipmentService {
   }
 
   getEquipmentByName(substring: string): Observable<Equipment[]> {
-    let equipmentListByName: Equipment[] = new Array<Equipment>();
-    this.getAllEquipment().pipe(map(equipment => 
+    const equipmentListByName: Equipment[] = new Array<Equipment>();
+    this.getAllEquipment().pipe(map(equipment =>
       equipment.filter(equipment => equipment.name.toLowerCase().includes(substring))))
       .subscribe(result => {
       for (let i = 0; i < result.length; i++) {      
