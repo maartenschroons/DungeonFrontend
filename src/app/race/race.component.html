@@ -1,0 +1,50 @@
+<div class="container"> 
+<h1>Race</h1>
+
+<form [formGroup]="raceForm" (ngSubmit)="onSubmit()" data-toggle="validator">
+
+    <div class="form-group">
+            <label for="inputName" class="pt-3">Race name</label>
+            <input type="text" class="form-control" id="inputName" placeholder="Race name" formControlName="inputName" [ngClass]="{ 'is-invalid': submitted && f.inputRaceNaam.errors }">
+            <div *ngIf="submitted && f.inputName.errors" class="invalid-feedback">
+                <div *ngIf="f.inputName.errors.required">Race name is required, please fill in the name of the race!</div>
+            </div>
+    </div>
+
+    <div class="form-group">
+            <label for="inputSpeed" class="pt-3">Speed</label>
+            <input type="number" class="form-control" id="inputSpeed" placeholder="Speed" formControlName="inputSpeed" [ngClass]="{ 'is-invalid': submitted && f.inputSpeed.errors }">
+            <div *ngIf="submitted && f.inputSpeed.errors" class="invalid-feedback">
+                <div *ngIf="f.inputSpeed.errors.required">Race speed is required, please fill in the speed of the race!</div>
+            </div>
+    </div>
+
+    <div class="form-group">
+            <label for="inputAligment" class="pt-3">Alignment</label>
+            <input type="text" class="form-control" id="inputAligment" placeholder="Alignment" formControlName="inputAligment" [ngClass]="{ 'is-invalid': submitted && f.inputAligment.errors }">
+            <div *ngIf="submitted && f.inputAligment.errors" class="invalid-feedback">
+                <div *ngIf="f.inputAligment.errors.required">Race alignment is required, please fill in the alignment of the race!</div>
+            </div>
+    </div>
+
+    <div class="form-group">
+            <label for="inputSize" class="pt-3">Size</label>
+            <input type="text" class="form-control" id="inputSize" placeholder="Size" formControlName="inputSize" [ngClass]="{ 'is-invalid': submitted && f.inputSize.errors }">
+            <div *ngIf="submitted && f.inputSize.errors" class="invalid-feedback">
+                <div *ngIf="f.inputSize.errors.required">Race size is required, please fill in the size of the race!</div>
+            </div>
+    </div>
+
+    <div class="form-group">
+            <label for="inputAbilityBonuses" class="pt-3">Ability bonuses</label>
+            <input type="text" class="form-control" id="inputAbilityBonuses" placeholder="Ability bonuses" formControlName="inputAbilityBonuses" [ngClass]="{ 'is-invalid': submitted && f.inputAbilityBonuses.errors }">
+            <div *ngIf="submitted && f.inputAbilityBonuses.errors" class="invalid-feedback">
+                <div *ngIf="f.inputAbilityBonuses.errors.required">Race ability bonuses is required, please fill in the ability bonuses of the race!</div>
+            </div>
+    </div>
+
+            <button type="submit" class="btn btn-primary">Toevoegen</button>
+        
+</form>
+
+</div>
