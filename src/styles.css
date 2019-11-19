@@ -2,8 +2,79 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import '~material-design-icons/iconfont/material-icons.css';
 
+.sidenav{
+  color: white;
+  background-color:lightgray ;
+}
 .container{
-  margin-bottom: 20px;
+  margin-bottom: 1px;
+}
+
+.subtitel{
+  font-size:17px;
+}
+
+.table{
+  color: black;
+}
+
+.topcontainer{
+  margin:5px;
+}
+
+.Button{
+  margin: 5px;
+}
+
+.form-control{
+width: 500px;
+}
+
+.loginbtn{
+  height:40px;
+  width: 100px;
+  color: white;
+}
+
+.logoutbtn{
+  height:40px;
+  width: 100px;
+  background-color: red;
+  color: white;
+}
+
+.registerbtn{
+  padding:5px;
+  color: white;
+  height:40px;
+  width: 100px;
+}
+
+.containerEquipment{
+  border-style: groove;
+  margin-top:0px;
+  margin-bottom:0px;
+  text-align: center;
+  padding: 0px;
+  font-size: 20px;
+  font-weight: bold;
+  background-color:#999999;
+  color: black;
+}
+.containerList{
+  border-style: groove;
+  margin-top:0px;
+  margin-bottom:0px;
+  text-align: center;
+  padding: 0px;
+  font-size: 14px;
+  background-color: white;
+}
+
+.sidenavmenu{
+background-color: #999999;
+border-style: solid;
+color: white;
 }
 
 h1{

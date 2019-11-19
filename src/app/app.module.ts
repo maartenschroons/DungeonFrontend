@@ -10,8 +10,9 @@ import { AddCharacterComponent } from './add-character/add-character.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EquipmentComponent } from './equipment/equipment.component';
-import { RaceComponent } from './race/race.component';
-//import { ClassComponent } from './class/class.component';
+import { ClassComponent } from './class/class.component';
+import {RaceComponent} from './race/race.component';
+import {RegisterComponent} from './register/register.component';
 
 
 
@@ -22,9 +23,9 @@ const appRoutes: Routes = ([
   { path: 'add', component: AddCharacterComponent },
   { path: 'user', component: UserListComponent },
   { path: 'equipment', component: EquipmentComponent },
-  { path: 'race', component: RaceComponent }
-  //{ path: 'class', component: ClassComponent }
-]);
+  { path: 'class', component: ClassComponent },
+  { path: 'register', component: RegisterComponent},
+  { path: 'race', component: RaceComponent }]);
 
 @NgModule({
   declarations: [
@@ -35,8 +36,9 @@ const appRoutes: Routes = ([
     AddCharacterComponent,
     UserListComponent,
     EquipmentComponent,
-    RaceComponent,
-    //ClassComponent
+    ClassComponent,
+    RegisterComponent,
+    RaceComponent
   ],
   imports: [
     BrowserModule,

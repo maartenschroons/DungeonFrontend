@@ -1,1 +1,18 @@
-<p>home works!</p>
+<div>
+    <h1>
+        Welkom op onze D&D webapplicatie!
+    </h1>
+</div>
+
+<div>
+    <h3 class="subtitel">
+        <p> Nadat je jezelf aangemeld hebt kan je een D&D character aanmaken.</p>
+        <p> Op het dashboard vind je al je aangemaakte characters.</p>
+    </h3>
+</div>
+<div>
+    <button mat-raised-button routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+        class="loginbtn">Login</button>
+    <button mat-raised-button routerLink="/register" routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }" class="registerbtn">Register</button>
+</div>

@@ -1,8 +1,28 @@
+<div class="titel" class="container topcontainer" fxLayout="row" fxLayout.sm="column" fxLayoutAlign="center">
+    <div class="container">
+        <h1>Equipment</h1>
+        <input type="text" class="form-control" id="EquipmentName" placeholder="Equipment" #name>
+        <p></p>
+        <button class="btn btn-dark Button" (click)="findEquipmentList(name.value)">Search Equipment by Name</button>
+        <button class="btn btn-dark Button" (click)="findEquipmentListCat(name.value)">Search Equipment by
+            Category</button>
+    </div>
+    <div>
+        <img src="../../assets/logo.png" alt="D&D Logo" />
+    </div>
+</div>
 
-<input type="text" class="form-control" id="EquipmentName" placeholder="Equipment" #name>
-    <p></p>
-    <button (click)="findEquipmentList(name.value)">Search Equipment by Name</button>
-    <button (click)="findEquipmentListCat(name.value)">Search Equipment by Category</button>
+<div class="Titel" class="container" fxLayout="row" fxLayout.sm="column" fxLayoutAlign="center">
+    <div class=" containerEquipment" fxFlex="10%">Index:</div>
+    <div class=" containerEquipment" fxFlex="30%">Name:</div>
+    <div class=" containerEquipment" fxFlex="30%">Category:</div>
+    <div class="containerEquipment" fxFlex="30%"> Weight:</div>
+</div>
 
- <p></p>
-<li *ngFor="let equipment of (equipmentListByName | async)">{{equipment.index}}| Name: {{equipment.name}}, Category: {{equipment.equipment_category}}, Weight: {{equipment.weight}}</li>
+<div class="Titel" class="container" fxLayout="row" fxLayout.sm="column" fxLayoutAlign="center"
+    *ngFor="let equipment of (equipmentList | async)">
+    <div class="containerList" fxFlex="10%">{{equipment.index}}</div>
+    <div class="containerList" fxFlex="30%">{{equipment.name}}</div>
+    <div class="containerList" fxFlex="30%">{{equipment.equipment_category}}</div>
+    <div class="containerList" fxFlex="30%">{{equipment.weight}}</div>
+</div>

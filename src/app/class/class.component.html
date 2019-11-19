@@ -1,0 +1,24 @@
+<div class="Titel" class="container" fxLayout="row" fxLayout.sm="column" fxLayoutAlign="center">
+    <div class="container">
+        <h1>Classes</h1>
+        <input type="text" class="form-control" id="ClassName" placeholder="Class" #name>
+        <p></p>
+        <button class="btn btn-dark Button" (click)="findClassList(name.value)">Search Classes by Name</button>
+    </div>
+    <div>
+        <img src="../../assets/logo.png" alt="D&D Logo"/>
+    </div>
+</div>
+
+<div class="Titel" class="container table" fxLayout="row" fxLayout.sm="column" fxLayoutAlign="center">
+    <div class=" containerEquipment" fxFlex="10%">Index:</div>
+    <div class=" containerEquipment" fxFlex="45%">Name:</div>
+    <div class=" containerEquipment" fxFlex="45%">Hits to Die:</div>
+</div>
+
+<div class="Titel" class="container" fxLayout="row" fxLayout.sm="column" fxLayoutAlign="center"
+    *ngFor="let class of (classList | async)">
+    <div class="containerList" fxFlex="10%">{{class.index}}</div>
+    <div class="containerList" fxFlex="45%">{{class.name}}</div>
+    <div class="containerList" fxFlex="45%">{{class.hit_die}}</div>
+</div>

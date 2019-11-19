@@ -9,9 +9,11 @@ import { EquipmentService } from '../services/equipment.service';
   styleUrls: ['./equipment.component.css']
 })
 export class EquipmentComponent implements OnInit {
-  equipmentListByName: Observable<Equipment[]>;
+  equipmentList: Observable<Equipment[]>;
 
-  constructor(private _equipmentService: EquipmentService) { }
+  constructor(private _equipmentService: EquipmentService) { 
+    this.equipmentList = this._equipmentService.getAllEquipment();
+  }
 
   ngOnInit() {
   }
@@ -19,13 +21,13 @@ export class EquipmentComponent implements OnInit {
   findEquipmentList(name: string) {
     name = name.toLowerCase();
 
-    this.equipmentListByName = this._equipmentService.getEquipmentByName(name);
+    this.equipmentList = this._equipmentService.getEquipmentByName(name);
   }
 
   findEquipmentListCat(name: string) {
     name = name.toLowerCase();
 
-    this.equipmentListByName = this._equipmentService.getEquipmentByCat(name);
+    this.equipmentList = this._equipmentService.getEquipmentByCat(name);
   }
 
 
