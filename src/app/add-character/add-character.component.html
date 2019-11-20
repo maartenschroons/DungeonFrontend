@@ -1,38 +1,38 @@
 <div class="container mt-5">
-  <form [formGroup]="newCharacterForm" (ngSubmit)="onSubmit()" data-toggle="validator">
+    <form [formGroup]="newCharacterForm" (ngSubmit)="onSubmit()" data-toggle="validator">
 
-    <h1 class="m">
-      <i class="material-icons md-44">group_add</i>
-      Add a new character
-    </h1>
+        <h1 class="m">
+            <i class="material-icons md-44">group_add</i>
+            Add a new character
+        </h1>
 
-    <!-- CHARACTER NAME INPUT FORM CONTROL -->
-    <div class="form-group">
-      <label for="inputName" class="pt-3">Character name</label>
-      <input type="text" class="form-control" id="inputName" placeholder="Character name"
-             formControlName="inputName" [ngClass]="{ 'is-invalid': submitted && f.inputNaam.errors }">
-      <div *ngIf="submitted && f.inputName.errors" class="invalid-feedback">
-        <div *ngIf="f.inputName.errors.required">Character name is required, please fill in your Character name!</div>
-      </div>
-    </div>
+        <!-- CHARACTER NAME INPUT FORM CONTROL -->
+        <div class="form-group">
+            <label for="inputName" class="pt-3">Character name</label>
+            <input type="text" class="form-control" id="inputName" placeholder="Character name"
+                formControlName="inputName" [ngClass]="{ 'is-invalid': submitted && f.inputNaam.errors }">
+            <div *ngIf="submitted && f.inputName.errors" class="invalid-feedback">
+                <div *ngIf="f.inputName.errors.required">Character name is required, please fill in your Character name!
+                </div>
+            </div>
+        </div>
 
-    <!-- RACE SELECT FORM CONTROL -->
-    <div class="form-group">
-      <label for="selectRace" class="pt-3">Race</label>
-      <select class="form-control" id="selectRace">
-        <option *ngFor="let race of raceArray">{{race.naam}}</option>
-      </select>
-    </div>
+        <!-- RACE SELECT FORM CONTROL -->
+        <div class="form-group">
+            <label for="selectRace" class="pt-3">Race</label>
+            <select class="form-control" id="selectRace">
+                <option *ngFor="let race of raceArray">{{race.naam}}</option>
+            </select>
+        </div>
 
-    <!-- ALIGNMENT SELECT FORM CONTROL -->
-    <div class="form-group">
-      <label for="selectRace" class="pt-3">Alignment</label>
-      <select class="form-control" id="selectRace">
-        <option *ngFor="let alignment of alignmentArray">{{alignment.naam}}</option>
-      </select>
-    </div>
+        <!-- ALIGNMENT SELECT FORM CONTROL -->
+        <div class="form-group">
+            <label for="selectRace" class="pt-3">Alignment</label>
+            <select class="form-control" id="selectRace">
+                <option *ngFor="let alignment of alignmentArray">{{alignment.naam}}</option>
+            </select>
+        </div>
 
 
-  </form>
+    </form>
 </div>
-
