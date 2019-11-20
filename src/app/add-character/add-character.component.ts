@@ -29,20 +29,25 @@ export class AddCharacterComponent implements OnInit {
     class: ['']
   });
   classModel: Class = new Class(0, null, null);
-  raceModel: Race = new Race(0,  null,  null,  null, null, null);
+  raceModel: Race = new Race(0, null, null, null, null, null);
   characterModel: Character = new Character(0, null, null, null, null, null, null, null, null, null, null, null);
   equipmentModel: Equipment = new Equipment(0, null, null, null, null, 0);
   equipmentList: Observable<Equipment[]>;
-  raceList: Observable<Race[]>;
-  classList: Observable<Class[]>;
+  equipment: Equipment = new Equipment(0, null, null, null, null, 0);;
+  class: Class = new Class(0,null,0);
 
-  constructor(private fb: FormBuilder, private _equipmentService: EquipmentService, private _classService: ClassService ) {
-    this.fillLists();
+  constructor(private fb: FormBuilder, private _equipmentService: EquipmentService, private _classService: ClassService) {
+    this.fillVariables();
   }
 
-  fillLists() {
-    this.equipmentList = this._equipmentService.getAllEquipment();
-    this.classList = this._classService.getAllClasses();
+  fillVariables() {
+    if (parseInt(localStorage.getItem("equipmentId")) != null) {
+      this.equipment = this._equipmentService.getEquipmentById(parseInt(localStorage.getItem("equipmentId")));
+    }
+    if (parseInt(localStorage.getItem("classId")) != null) {
+      this.class = this._classService.getClassById(parseInt(localStorage.getItem("classId")));
+    }
+    
   }
   ngOnInit() {
   }

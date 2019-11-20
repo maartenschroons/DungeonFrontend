@@ -13,16 +13,18 @@
 </div>
 
 <div class="Titel" class="container" fxLayout="row" fxLayout.sm="column" fxLayoutAlign="center">
-    <div class=" containerEquipment" fxFlex="10%">Index:</div>
-    <div class=" containerEquipment" fxFlex="30%">Name:</div>
-    <div class=" containerEquipment" fxFlex="30%">Category:</div>
-    <div class="containerEquipment" fxFlex="30%"> Weight:</div>
+    <div class=" containerEquipment" fxFlex="3%">Id:</div>
+    <div class=" containerEquipment" fxFlex="23%">Name:</div>
+    <div class=" containerEquipment" fxFlex="23%">Category:</div>
+    <div class="containerEquipment" fxFlex="23%"> Weight:</div>
+    <div class="containerEquipment" fxFlex="26%">Add to new character</div>
 </div>
 
 <div class="Titel" class="container" fxLayout="row" fxLayout.sm="column" fxLayoutAlign="center"
     *ngFor="let equipment of (equipmentList | async)">
-    <div class="containerList" fxFlex="10%">{{equipment.index}}</div>
-    <div class="containerList" fxFlex="30%">{{equipment.name}}</div>
-    <div class="containerList" fxFlex="30%">{{equipment.equipment_category}}</div>
-    <div class="containerList" fxFlex="30%">{{equipment.weight}}</div>
+    <div class="containerList" fxFlex="3%">{{equipment.index}}</div>
+    <div class="containerList" fxFlex="23%">{{equipment.name}}</div>
+    <div class="containerList" fxFlex="23%">{{equipment.equipment_category}}</div>
+    <div class="containerList" fxFlex="23%">{{equipment.weight}}</div>
+    <div class="containerList" fxFlex="26%"><button class="btn btn-dark Button"(click)="Add(equipment.index)">Add to your character</button></div>
 </div>

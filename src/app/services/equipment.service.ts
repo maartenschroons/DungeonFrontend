@@ -21,16 +21,16 @@ export class EquipmentService {
     this.http.get<Lijst>("http://dnd5eapi.co/api/equipment")
       .subscribe(result => {
         for (let i = 0; i < result.results.length; i++) {
-          this.equipmentList[i] = this.getEquipmentById(result.results[i].url);
+          this.equipmentList[i] = this.getEquipmentByUrl(result.results[i].url);
         }
       });
     return of(this.equipmentList);
   }
 
-  getEquipmentById(url: string): Equipment {
+  getEquipmentById(id: number): Equipment {
     const equipment = new Equipment(0, "", "", "", "", 0);
     
-    this.http.get<Equipment>(url).subscribe(
+    this.http.get<Equipment>("http://www.dnd5eapi.co/api/equipment/"+id).subscribe(
       result => {
         equipment.index = result.index;
         equipment.name = result.name;
@@ -65,5 +65,21 @@ export class EquipmentService {
       }
     });
     return of(equipmentListByName);
+  }
+
+  getEquipmentByUrl(url: string): Equipment {
+    const equipment = new Equipment(0, "", "", "", "", 0);
+    
+    this.http.get<Equipment>(url).subscribe(
+      result => {
+        equipment.index = result.index;
+        equipment.name = result.name;
+        equipment.category_range = result.category_range;
+        equipment.weapon_range = result.weapon_range;
+        equipment.equipment_category = result.equipment_category;
+        equipment.weight = result.weight;
+      });
+
+    return equipment;
   }
 }

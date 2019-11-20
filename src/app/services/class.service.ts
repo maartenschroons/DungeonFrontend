@@ -18,13 +18,13 @@ export class ClassService {
     this.http.get<Lijst>("http://dnd5eapi.co/api/classes")
       .subscribe(result => {
         for (let i = 0; i < result.results.length; i++) {
-          this.classList[i] = this.getClassById(result.results[i].url);
+          this.classList[i] = this.getClassByUrl(result.results[i].url);
         }
       });
     return of(this.classList);
   }
 
-  getClassById(url: string): Class {
+  getClassByUrl(url: string): Class {
     const classModel = new Class(0, "", 0);
 
     this.http.get<Class>(url).subscribe(
@@ -49,4 +49,16 @@ export class ClassService {
     return of(classListByName);
   }
 
+  getClassById(id: number): Class {
+    const classModel = new Class(0, "", 0);
+
+    this.http.get<Class>("http://www.dnd5eapi.co/api/classes/" + id).subscribe(
+      result => {
+        classModel.index = result.index;
+        classModel.name = result.name;
+        classModel.hit_die = result.hit_die;
+      });
+
+    return classModel;
+  }
 }
