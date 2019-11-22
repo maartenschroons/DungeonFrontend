@@ -1,3 +1,17 @@
 export class Character {
-    constructor(public id: number, public raceId:number, public equipmentId: number, public classId: number,public name: string, public alignment: string, public strenght: number, public dexterity: number, public constitution: number, public wisdom: number, public intelligence: number, public charisma: number){}
+    constructor(
+      public id: number,
+      public raceid: number,
+      public equipmentid: number,
+      public classid: number,
+      public playerid: number,
+      public name: string,
+      public alignment: string,
+      public strength: number,
+      public dexterity: number,
+      public constitution: number,
+      public intelligence: number,
+      public wisdom: number,
+      public charisma: number
+    ) {}
 }

@@ -18,7 +18,7 @@ export class AddCharacterComponent implements OnInit {
   characterForm = this.fb.group({
     Name: ['', Validators.required],
     Alignment: ['', Validators.required],
-    Strenght: ['', Validators.required],
+    Strength: ['', Validators.required],
     Dexterity: ['', Validators.required],
     Constitution: ['', Validators.required],
     Wisdom: ['', Validators.required],
@@ -29,8 +29,8 @@ export class AddCharacterComponent implements OnInit {
     class: ['']
   });
   classModel: Class = new Class(0, null, null);
-  raceModel: Race = new Race(0, null, null, null, null, null);
-  characterModel: Character = new Character(0, null, null, null, null, null, null, null, null, null, null, null);
+  raceModel: Race = new Race('id', null, null, null, null);
+  characterModel: Character = new Character(0, null, null, null, null, null, null, null, null, null, null, null, null);
   equipmentModel: Equipment = new Equipment(0, null, null, null, null, 0);
   equipmentList: Observable<Equipment[]>;
   equipment: Equipment = new Equipment(0, null, null, null, null, 0);;
@@ -41,13 +41,13 @@ export class AddCharacterComponent implements OnInit {
   }
 
   fillVariables() {
-    if (parseInt(localStorage.getItem("equipmentId")) != null) {
+    if (parseInt(localStorage.getItem('equipmentId')) != null) {
       this.equipment = this._equipmentService.getEquipmentById(parseInt(localStorage.getItem("equipmentId")));
     }
-    if (parseInt(localStorage.getItem("classId")) != null) {
+    if (parseInt(localStorage.getItem('classId')) != null) {
       this.class = this._classService.getClassById(parseInt(localStorage.getItem("classId")));
     }
-    
+
   }
   ngOnInit() {
   }

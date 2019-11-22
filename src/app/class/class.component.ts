@@ -13,7 +13,7 @@ export class ClassComponent implements OnInit {
 
   classList: Observable<Class[]>;
 
-  constructor(private _classService: ClassService, private router: Router) { 
+  constructor(private _classService: ClassService, private router: Router) {
     this.classList = this._classService.getAllClasses();
   }
 
