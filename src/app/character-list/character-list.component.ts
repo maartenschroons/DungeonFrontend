@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {CharacterService} from '../services/character.service';
+import {Observable} from 'rxjs';
+import {Character} from '../models/character.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-character-list',
@@ -6,10 +10,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./character-list.component.css']
 })
 export class CharacterListComponent implements OnInit {
+  playerid = 1;
+  characterList: Observable<Character[]>;
 
-  constructor() { }
+  constructor(private _characterService: CharacterService, private router: Router) {
+    this.characterList = this._characterService.getAllCharactersByPlayerid(this.playerid);
+    console.log(this.characterList);
+  }
 
   ngOnInit() {
   }
+
+  EditCharacter(characterid: number){
+    localStorage.setItem('characterid', characterid.toString());
+    this.router.navigate(['/editcharacter'], {replaceUrl: true});
+  }
+
 
 }

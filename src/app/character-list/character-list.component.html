@@ -1,1 +1,7 @@
-<li>list of characters</li>
+<div class="container">
+  <h1>list of characters</h1>
+  <div class="list-group" *ngFor="let character of (characterList | async)">
+    <p  class="list-group-item" (click)="EditCharacter(character.id)">{{character.name}}</p>
+  </div>
+</div>
+

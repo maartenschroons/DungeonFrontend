@@ -15,8 +15,8 @@ export class RaceService {
     return this.http.get<Race>("" + raceID);
   }
 
-  getRaces(raceID: number): Observable<Race[]>{
-    return this.http.get<Race[]>("" + raceID)
+  getAllRaces(): Observable<Race[]>{
+    return this.http.get<Race[]>('http://localhost:8010/race/all');
   }
 
   insertRace(race: Race){

@@ -7,13 +7,13 @@
         <button class="btn btn-dark Button" (click)="findEquipmentListCat(name.value)">Search Equipment by
             Category</button>
     </div>
-    <div>
-        <img src="../../assets/logo.png" alt="D&D Logo" />
-    </div>
+  <div>
+    <img src="../../assets/logo.png" alt="D&D Logo" />
+  </div>
 </div>
 
 <div class="Titel" class="container" fxLayout="row" fxLayout.sm="column" fxLayoutAlign="center">
-    <div class=" containerEquipment" fxFlex="3%">Id:</div>
+
     <div class=" containerEquipment" fxFlex="23%">Name:</div>
     <div class=" containerEquipment" fxFlex="23%">Category:</div>
     <div class="containerEquipment" fxFlex="23%"> Weight:</div>
@@ -22,9 +22,8 @@
 
 <div class="Titel" class="container" fxLayout="row" fxLayout.sm="column" fxLayoutAlign="center"
     *ngFor="let equipment of (equipmentList | async)">
-    <div class="containerList" fxFlex="3%">{{equipment.index}}</div>
     <div class="containerList" fxFlex="23%">{{equipment.name}}</div>
     <div class="containerList" fxFlex="23%">{{equipment.equipment_category}}</div>
     <div class="containerList" fxFlex="23%">{{equipment.weight}}</div>
-    <div class="containerList" fxFlex="26%"><button class=" btn btn-primary Button"(click)="Add(equipment.index)">Add</button></div>
+    <div class="containerList" fxFlex="26%"><a class=" btn btn-secondary Button"(click)="Add(equipment.index, equipment.name)">Add</a></div>
 </div>

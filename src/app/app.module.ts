@@ -13,6 +13,8 @@ import { EquipmentComponent } from './equipment/equipment.component';
 import { ClassComponent } from './class/class.component';
 import {RaceComponent} from './race/race.component';
 import {RegisterComponent} from './register/register.component';
+import {CharacterService} from './services/character.service';
+import { EditCharacterComponent } from './edit-character/edit-character.component';
 
 
 
@@ -25,6 +27,7 @@ const appRoutes: Routes = ([
   { path: 'equipment', component: EquipmentComponent },
   { path: 'class', component: ClassComponent },
   { path: 'register', component: RegisterComponent},
+  { path: 'editcharacter', component: EditCharacterComponent},
   { path: 'race', component: RaceComponent }]);
 
 @NgModule({
@@ -38,7 +41,8 @@ const appRoutes: Routes = ([
     EquipmentComponent,
     ClassComponent,
     RegisterComponent,
-    RaceComponent
+    RaceComponent,
+    EditCharacterComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,9 @@ const appRoutes: Routes = ([
     HttpClientModule,
     RouterModule.forRoot(appRoutes, { enableTracing: false })
   ],
-  providers: [],
+  providers: [
+    CharacterService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

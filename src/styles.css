@@ -112,3 +112,7 @@ h1{
 .pointer{
   cursor: pointer;
 }
+
+table {
+  table-layout: fixed;
+}

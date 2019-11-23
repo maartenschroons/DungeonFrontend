@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Equipment } from '../models/equipment.model';
-import { EquipmentService } from '../services/equipment.service';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs';
+import {Equipment} from '../models/equipment.model';
+import {EquipmentService} from '../services/equipment.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-equipment',
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class EquipmentComponent implements OnInit {
   equipmentList: Observable<Equipment[]>;
 
-  constructor(private _equipmentService: EquipmentService, private router: Router) { 
+  constructor(private _equipmentService: EquipmentService, private router: Router) {
     this.equipmentList = this._equipmentService.getAllEquipment();
   }
 
@@ -21,19 +21,27 @@ export class EquipmentComponent implements OnInit {
 
   findEquipmentList(name: string) {
     name = name.toLowerCase();
-
-    this.equipmentList = this._equipmentService.getEquipmentByName(name);
+    if (name != '' && name != null) {
+      this.equipmentList = this._equipmentService.getEquipmentByName(name);
+    } else {
+      this.equipmentList = null;
+    }
   }
 
   findEquipmentListCat(name: string) {
     name = name.toLowerCase();
+    if (name != '' && name != null) {
+      this.equipmentList = this._equipmentService.getEquipmentByCat(name);
+    } else {
+      this.equipmentList= null;
+    }
 
-    this.equipmentList = this._equipmentService.getEquipmentByCat(name);
   }
 
-  Add(id: number){
-    localStorage.setItem("equipmentId", id.toString());
-    this.router.navigateByUrl('/add');
+  Add(id: number, name: string) {
+    localStorage.setItem('equipmentId', id.toString());
+    localStorage.setItem('equipmentName', name.toString());
+    this.findEquipmentList(name);
   }
 
 

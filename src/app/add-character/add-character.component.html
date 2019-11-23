@@ -1,38 +1,138 @@
-<div class="container mt-5">
-    <form [formGroup]="newCharacterForm" (ngSubmit)="onSubmit()" data-toggle="validator">
+<div class="container mt-5 align-content-center ">
+  
+  <form [formGroup]="characterForm" (ngSubmit)="onSubmit()" data-toggle="validator">
 
-        <h1 class="m">
-            <i class="material-icons md-44">group_add</i>
-            Add a new character
-        </h1>
+    <h1 class="m">
+      <i class="material-icons md-44">group_add</i>
+      Add a new character
+    </h1>
 
-        <!-- CHARACTER NAME INPUT FORM CONTROL -->
-        <div class="form-group">
-            <label for="inputName" class="pt-3">Character name</label>
-            <input type="text" class="form-control" id="inputName" placeholder="Character name"
-                formControlName="inputName" [ngClass]="{ 'is-invalid': submitted && f.inputNaam.errors }">
-            <div *ngIf="submitted && f.inputName.errors" class="invalid-feedback">
-                <div *ngIf="f.inputName.errors.required">Character name is required, please fill in your Character name!
-                </div>
-            </div>
+    <!-- CHARACTER NAME INPUT FORM CONTROL -->
+    <div class="form-group">
+      <label for="inputName" class="pt-3">Character name</label>
+      <input type="text" class="form-control" id="inputName" placeholder="Character name"
+             formControlName="inputName" [ngClass]="{ 'is-invalid': submitted && f.inputName.errors }">
+      <div *ngIf="submitted && f.inputName.errors" class="invalid-feedback">
+        <div *ngIf="f.inputName.errors.required">Character name is required, please fill in your Character name!
         </div>
+      </div>
+    </div>
 
-        <!-- RACE SELECT FORM CONTROL -->
-        <div class="form-group">
-            <label for="selectRace" class="pt-3">Race</label>
-            <select class="form-control" id="selectRace">
-                <option *ngFor="let race of raceArray">{{race.naam}}</option>
-            </select>
+    <!-- CLASS SELECT FORM CONTROL -->
+    <div class="form-group">
+      <label for="selectClass" class="pt-3">Class</label>
+      <select class="form-control" id="selectClass" formControlName="selectClass"
+              [ngClass]="{ 'is-invalid': submitted && f.selectClass.errors }">
+        <option *ngFor="let class of (classArray | async)" [value]="class.index">{{class.name}}</option>
+      </select>
+      <div *ngIf="submitted && f.selectClass.errors" class="invalid-feedback">
+        <div *ngIf="f.selectClass.errors.required">Class is required, please select a class!
         </div>
+      </div>
+    </div>
 
-        <!-- ALIGNMENT SELECT FORM CONTROL -->
-        <div class="form-group">
-            <label for="selectRace" class="pt-3">Alignment</label>
-            <select class="form-control" id="selectRace">
-                <option *ngFor="let alignment of alignmentArray">{{alignment.naam}}</option>
-            </select>
+    <!-- RACE SELECT FORM CONTROL -->
+    <div class="form-group">
+      <label for="selectRace" class="pt-3">Race</label>
+      <select class="form-control" id="selectRace" formControlName="selectRace"
+              [ngClass]="{ 'is-invalid': submitted && f.selectRace.errors }">
+        <option *ngFor="let race of (raceArray | async)" [value]="race.id">{{race.name}}</option>
+      </select>
+      <div *ngIf="submitted && f.selectRace.errors" class="invalid-feedback">
+        <div *ngIf="f.selectRace.errors.required">Race is required, please select a race!
         </div>
+      </div>
+    </div>
 
+    <!-- ALIGNMENT SELECT FORM CONTROL -->
+    <div class="form-group">
+      <label for="selectAlignment" class="pt-3">Alignment</label>
+      <select class="form-control" id="selectAlignment" formControlName="selectAlignment"
+              [ngClass]="{ 'is-invalid': submitted && f.selectAlignment.errors }">
+        <option *ngFor="let alignment of alignmentArray" [value]="alignment">{{alignment}}</option>
+      </select>
+      <div *ngIf="submitted && f.selectAlignment.errors" class="invalid-feedback">
+        <div *ngIf="f.selectAlignment.errors.required">Alignment is required, please select a alignment!
+        </div>
+      </div>
+    </div>
+    <h2 class="text-center">Points available: <span>{{availablePoints}}</span></h2>
+    <div *ngIf="submitted && availablePoints > 0" class="alert-warning text-center"> Spend all your points please</div>
+    <table class="table table-striped table-active text-center">
+      <tr>
+        <th class="left-align ">Ability</th>
+        <th class="center-align ">Points</th>
+        <th class="center-align ">Point cost</th>
+      </tr>
 
-    </form>
+      <!--ROW STR-->
+      <tr>
+        <td class="left-align">STR</td>
+        <td class="center-align">
+          <span class="right-align pointer" (click)="StrDown()"><i class="material-icons">keyboard_arrow_left</i></span>
+          <span class="center-align"> {{strPunten}} </span>
+          <span class="left-align pointer" (click)="StrUp()"><i class="material-icons">keyboard_arrow_right</i></span>
+        </td>
+        <td class="center-align">1</td>
+      </tr>
+
+      <!--ROW DEX-->
+      <tr>
+        <td class="left-align">DEX</td>
+        <td class="center-align">
+          <span class="right-align pointer" (click)="DexDown()"><i class="material-icons">keyboard_arrow_left</i></span>
+          <span class="center-align"> {{dexPunten}} </span>
+          <span class="left-align pointer" (click)="DexUp()"><i class="material-icons">keyboard_arrow_right</i></span>
+        </td>
+        <td class="center-align">1</td>
+      </tr>
+
+      <!--ROW CON-->
+      <tr>
+        <td class="left-align">CON</td>
+        <td class="center-align">
+          <span class="right-align pointer" (click)="ConDown()"><i class="material-icons">keyboard_arrow_left</i></span>
+          <span class="center-align"> {{conPunten}} </span>
+          <span class="left-align pointer" (click)="ConUp()"><i class="material-icons">keyboard_arrow_right</i></span>
+        </td>
+        <td class="center-align">1</td>
+      </tr>
+
+      <!--ROW INT-->
+      <tr>
+        <td class="left-align">INT</td>
+        <td class="center-align">
+          <span class="right-align pointer" (click)="IntDown()"><i class="material-icons">keyboard_arrow_left</i></span>
+          <span class="center-align"> {{intPunten}} </span>
+          <span class="left-align pointer" (click)="IntUp()"><i class="material-icons">keyboard_arrow_right</i></span>
+        </td>
+        <td class="center-align">1</td>
+      </tr>
+
+      <!--ROW WIS-->
+      <tr>
+        <td class="left-align">WIS</td>
+        <td class="center-align">
+          <span class="right-align pointer" (click)="WisDown()"><i class="material-icons">keyboard_arrow_left</i></span>
+          <span class="center-align"> {{wisPunten}} </span>
+          <span class="left-align pointer" (click)="WisUp()"><i class="material-icons">keyboard_arrow_right</i></span>
+        </td>
+        <td class="center-align">1</td>
+      </tr>
+
+      <!--ROW CHA-->
+      <tr>
+        <td class="left-align">CHA</td>
+        <td class="center-align">
+          <span class="right-align pointer" (click)="ChaDown()"><i class="material-icons">keyboard_arrow_left</i></span>
+          <span class="center-align"> {{chaPunten}} </span>
+          <span class="left-align pointer" (click)="ChaUp()"><i class="material-icons">keyboard_arrow_right</i></span>
+        </td>
+        <td class="center-align">1</td>
+      </tr>
+    </table>
+    <app-equipment></app-equipment>
+
+    <button type="submit" class="btn btn-primary mt-4">Register</button>
+  </form>
 </div>

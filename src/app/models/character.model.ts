@@ -1,7 +1,7 @@
 export class Character {
     constructor(
       public id: number,
-      public raceid: number,
+      public raceid: String,
       public equipmentid: number,
       public classid: number,
       public playerid: number,
