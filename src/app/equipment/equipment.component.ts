@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class EquipmentComponent implements OnInit {
   equipmentList: Observable<Equipment[]>;
 
-  constructor(private _equipmentService: EquipmentService, private router: Router) { 
+  constructor(private _equipmentService: EquipmentService, private router: Router) {
     this.equipmentList = this._equipmentService.getAllEquipment();
   }
 
@@ -31,8 +31,8 @@ export class EquipmentComponent implements OnInit {
     this.equipmentList = this._equipmentService.getEquipmentByCat(name);
   }
 
-  Add(id: number){
-    localStorage.setItem("equipmentId", id.toString());
+  Add(id: number) {
+    localStorage.setItem('equipmentId', id.toString());
     this.router.navigateByUrl('/add');
   }
 

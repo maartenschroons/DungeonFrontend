@@ -1,9 +1,9 @@
- ;<nav>
+ ;<nav >
   <mat-sidenav-container class="nav-container">
-    <mat-sidenav mode="side" opened="true" class="sidenavmenu">
+    <mat-sidenav mode="side" opened="true" class="sidenavmenu" >
       <mat-nav-list>
         <a mat-list-item routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
-        <a mat-list-item routerLink="/list" routerLinkActive="active"
+        <a *ngIf="huidigeGebruiker !=null" mat-list-item routerLink="/list" routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }">CharacterList</a>
         <a mat-list-item routerLink="/add" routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }">AddCharacter</a>

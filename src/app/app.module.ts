@@ -13,6 +13,7 @@ import { EquipmentComponent } from './equipment/equipment.component';
 import { ClassComponent } from './class/class.component';
 import {RaceComponent} from './race/race.component';
 import {RegisterComponent} from './register/register.component';
+import {MatCardModule} from '@angular/material';
 
 
 
@@ -44,7 +45,8 @@ const appRoutes: Routes = ([
     BrowserModule,
     SharedModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes, { enableTracing: false })
+    RouterModule.forRoot(appRoutes, {enableTracing: false}),
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

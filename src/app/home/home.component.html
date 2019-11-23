@@ -10,9 +10,13 @@
         <p> Op het dashboard vind je al je aangemaakte characters.</p>
     </h3>
 </div>
-<div>
+<div *ngIf="huidigeGebruiker==null">
     <button mat-raised-button routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
         class="loginbtn">Login</button>
     <button mat-raised-button routerLink="/register" routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }" class="registerbtn">Register</button>
+</div>
+<div *ngIf="huidigeGebruiker!=null">
+  <button mat-raised-button (click)="loguit()" class="loginbtn">Loguit</button>
+
 </div>
