@@ -13,8 +13,10 @@ import { EquipmentComponent } from './equipment/equipment.component';
 import { ClassComponent } from './class/class.component';
 import {RaceComponent} from './race/race.component';
 import {RegisterComponent} from './register/register.component';
+
 import {CharacterService} from './services/character.service';
 import { EditCharacterComponent } from './edit-character/edit-character.component';
+import {MatCardModule} from '@angular/material';
 
 
 
@@ -48,7 +50,8 @@ const appRoutes: Routes = ([
     BrowserModule,
     SharedModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes, { enableTracing: false })
+    RouterModule.forRoot(appRoutes, {enableTracing: false}),
+    MatCardModule
   ],
   providers: [
     CharacterService

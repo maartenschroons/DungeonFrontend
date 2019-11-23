@@ -25,5 +25,8 @@
     <div class="containerList" fxFlex="23%">{{equipment.name}}</div>
     <div class="containerList" fxFlex="23%">{{equipment.equipment_category}}</div>
     <div class="containerList" fxFlex="23%">{{equipment.weight}}</div>
-    <div class="containerList" fxFlex="26%"><a class=" btn btn-secondary Button"(click)="Add(equipment.index, equipment.name)">Add</a></div>
+    <div class="containerList" fxFlex="26%">
+      <a *ngIf="!added" class=" btn btn-secondary Button"(click)="Add(equipment.index, equipment.name)">Equip</a>
+      <a *ngIf="added" class=" btn btn-secondary Button"(click)="Change()">Change</a>
+    </div>
 </div>

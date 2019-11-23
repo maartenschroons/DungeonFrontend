@@ -1,13 +1,18 @@
+<form (ngSubmit)="onSubmit()" class="example-form">
 
-<p>
-  <mat-form-field>
-    <input matInput placeholder="Username" type="text" required minlength="2" name="Username" />
-  </mat-form-field>
-</p>
-<p>
-  <mat-form-field>
-    <input matInput placeholder="Password" type="password" required name="Password"/>
-  </mat-form-field>
-</p>
-<p><button mat-raised-button color="primary" type="submit">Submit</button></p>
+  <mat-card-content>
+    <mat-form-field>
+      <input [(ngModel)]="model.username" name="gebruikersNaam" matInput
+             placeholder="Gebruikersnaam">
+    </mat-form-field>
 
+    <mat-form-field>
+      <input [(ngModel)]="model.password" name="wachtWoord" matInput placeholder="Wachtwoord"
+             type="password">
+    </mat-form-field>
+
+  </mat-card-content>
+
+  <button mat-raised-button color="primary" type="submit">Log in</button>
+
+</form>

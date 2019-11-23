@@ -10,7 +10,8 @@ import {Router} from '@angular/router';
   styleUrls: ['./equipment.component.css']
 })
 export class EquipmentComponent implements OnInit {
-  equipmentList: Observable<Equipment[]>;
+  equipmentList: Observable<Equipment[]>
+  added = false;;
 
   constructor(private _equipmentService: EquipmentService, private router: Router) {
     this.equipmentList = this._equipmentService.getAllEquipment();
@@ -42,7 +43,13 @@ export class EquipmentComponent implements OnInit {
     localStorage.setItem('equipmentId', id.toString());
     localStorage.setItem('equipmentName', name.toString());
     this.findEquipmentList(name);
+    this.added = true;
   }
 
-
+  Change(){
+    localStorage.removeItem('equipmentId');
+    localStorage.removeItem('equipmentName');
+    this.equipmentList = this._equipmentService.getEquipmentByCat('');
+    this.added = false;
+  }
 }

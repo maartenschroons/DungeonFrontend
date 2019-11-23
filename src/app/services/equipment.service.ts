@@ -18,7 +18,7 @@ export class EquipmentService {
   constructor(private http: HttpClient) { }
 
   getAllEquipment(): Observable<Equipment[]> {
-    this.http.get<Lijst>("http://dnd5eapi.co/api/equipment")
+    this.http.get<Lijst>('http://dnd5eapi.co/api/equipment')
       .subscribe(result => {
         for (let i = 0; i < result.results.length; i++) {
           this.equipmentList[i] = this.getEquipmentByUrl(result.results[i].url);
@@ -28,9 +28,10 @@ export class EquipmentService {
   }
 
   getEquipmentById(id: number): Equipment {
-    const equipment = new Equipment(0, "", "", "", "", 0);
+    const equipment = new Equipment(0, '', '', '', '', 0);
 
-    this.http.get<Equipment>("http://www.dnd5eapi.co/api/equipment/"+id).subscribe(
+    this.http.get<Equipment>('http://www.dnd5eapi.co/api/equipment/' + id).subscribe (
+
       result => {
         equipment.index = result.index;
         equipment.name = result.name;
