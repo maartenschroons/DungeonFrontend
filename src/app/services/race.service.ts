@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Race } from '../models/race.model';
 import { race } from 'q';
+import {Character} from '../models/character.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class RaceService {
 
   constructor(private http: HttpClient) { }
 
-  getRace(raceID: number): Observable<Race>{
-    return this.http.get<Race>("" + raceID);
+  public getRaceById(id: String) {
+    return this.http.get<Character>('http://localhost:8010/race/id?id=' + id);
   }
 
   getAllRaces(): Observable<Race[]>{

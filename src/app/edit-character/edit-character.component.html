@@ -1,4 +1,252 @@
-<p>edit-character works!</p>
-<div  class="mt-4">
-  <a [routerLink]="" (click)="NaarList()">Back to character list.</a>
+<div class="container text-center"><!--PREVIEUW-->
+  <div *ngIf="!edit">
+    <h1>Character: {{character.name}}</h1>
+    <h3>Class: {{class.name}}</h3>
+    <h3>Race: {{race.name}}</h3>
+    <div>
+      Your characters has a "{{equipment.name}}" as equipment.
+    </div>
+
+
+    <!-- TABLE STATS -->
+    <table class="table table-striped table-active text-center">
+      <tr>
+        <th class="left-align ">Ability</th>
+        <th class="center-align ">Points</th>
+        <th class="center-align ">Modifier</th>
+      </tr>
+
+      <!--ROW STR-->
+      <tr>
+        <td class="left-align">STR</td>
+        <td class="center-align">
+          <span class="center-align"> {{character.strength}} </span>
+        </td>
+        <td class="center-align">{{(character.strength - 10) / 2}}</td>
+      </tr>
+
+      <!--ROW DEX-->
+      <tr>
+        <td class="left-align">DEX</td>
+        <td class="center-align">
+          <span class="center-align"> {{character.dexterity}} </span>
+        </td>
+        <td class="center-align">{{(character.dexterity - 10) / 2}}</td>
+      </tr>
+
+      <!--ROW CON-->
+      <tr>
+        <td class="left-align">CON</td>
+        <td class="center-align">
+          <span class="center-align"> {{character.constitution}} </span>
+        </td>
+        <td class="center-align">{{(character.constitution - 10) / 2}}</td>
+      </tr>
+
+      <!--ROW INT-->
+      <tr>
+        <td class="left-align">INT</td>
+        <td class="center-align">
+          <span class="center-align"> {{character.intelligence}} </span>
+        </td>
+        <td class="center-align">{{(character.intelligence - 10) / 2}}</td>
+      </tr>
+
+      <!--ROW WIS-->
+      <tr>
+        <td class="left-align">WIS</td>
+        <td class="center-align">
+          <span class="center-align"> {{character.wisdom}} </span>
+        </td>
+        <td class="center-align">{{(character.wisdom - 10) / 2}}</td>
+      </tr>
+
+      <!--ROW CHA-->
+      <tr>
+        <td class="left-align">CHA</td>
+        <td class="center-align">
+          <span class="center-align"> {{character.charisma}} </span>
+        </td>
+        <td class="center-align">{{(character.charisma - 10) / 2}}</td>
+      </tr>
+    </table>
+
+    <button class="btn Button btn-primary" (click)="EditOrCancel()">Edit</button>
+
+  </div>
+  <!--EDITING-->
+  <div *ngIf="edit">
+    <form [formGroup]="characterForm" (ngSubmit)="onSubmit()" data-toggle="validator">
+
+      <h1 class="m">
+        Edit your character
+      </h1>
+      <h2 class="text-center">Points available: <span>{{availablePoints}}</span></h2>
+      <div *ngIf="submitted && availablePoints > 0" class="alert-warning text-center"> Spend all your points please
+      </div>
+      <table class="table table-striped table-active text-center">
+        <tr>
+          <th class="left-align ">Ability</th>
+          <th class="center-align ">Points</th>
+          <th class="center-align ">Point cost</th>
+        </tr>
+
+        <!--ROW STR-->
+        <tr>
+          <td class="left-align">STR</td>
+          <td class="center-align">
+            <span class="right-align pointer" (click)="StrDown()"><i
+              class="material-icons">keyboard_arrow_left</i></span>
+            <span class="center-align"> {{strPunten}} </span>
+            <span class="left-align pointer" (click)="StrUp()"><i class="material-icons">keyboard_arrow_right</i></span>
+          </td>
+          <td class="center-align">1</td>
+        </tr>
+
+        <!--ROW DEX-->
+        <tr>
+          <td class="left-align">DEX</td>
+          <td class="center-align">
+            <span class="right-align pointer" (click)="DexDown()"><i
+              class="material-icons">keyboard_arrow_left</i></span>
+            <span class="center-align"> {{dexPunten}} </span>
+            <span class="left-align pointer" (click)="DexUp()"><i class="material-icons">keyboard_arrow_right</i></span>
+          </td>
+          <td class="center-align">1</td>
+        </tr>
+
+        <!--ROW CON-->
+        <tr>
+          <td class="left-align">CON</td>
+          <td class="center-align">
+            <span class="right-align pointer" (click)="ConDown()"><i
+              class="material-icons">keyboard_arrow_left</i></span>
+            <span class="center-align"> {{conPunten}} </span>
+            <span class="left-align pointer" (click)="ConUp()"><i class="material-icons">keyboard_arrow_right</i></span>
+          </td>
+          <td class="center-align">1</td>
+        </tr>
+
+        <!--ROW INT-->
+        <tr>
+          <td class="left-align">INT</td>
+          <td class="center-align">
+            <span class="right-align pointer" (click)="IntDown()"><i
+              class="material-icons">keyboard_arrow_left</i></span>
+            <span class="center-align"> {{intPunten}} </span>
+            <span class="left-align pointer" (click)="IntUp()"><i class="material-icons">keyboard_arrow_right</i></span>
+          </td>
+          <td class="center-align">1</td>
+        </tr>
+
+        <!--ROW WIS-->
+        <tr>
+          <td class="left-align">WIS</td>
+          <td class="center-align">
+            <span class="right-align pointer" (click)="WisDown()"><i
+              class="material-icons">keyboard_arrow_left</i></span>
+            <span class="center-align"> {{wisPunten}} </span>
+            <span class="left-align pointer" (click)="WisUp()"><i class="material-icons">keyboard_arrow_right</i></span>
+          </td>
+          <td class="center-align">1</td>
+        </tr>
+
+        <!--ROW CHA-->
+        <tr>
+          <td class="left-align">CHA</td>
+          <td class="center-align">
+            <span class="right-align pointer" (click)="ChaDown()"><i
+              class="material-icons">keyboard_arrow_left</i></span>
+            <span class="center-align"> {{chaPunten}} </span>
+            <span class="left-align pointer" (click)="ChaUp()"><i class="material-icons">keyboard_arrow_right</i></span>
+          </td>
+          <td class="center-align">1</td>
+        </tr>
+      </table>
+
+      <div *ngIf="!nameEdit"><span>Character: {{character.name}}</span><span><a class="Button btn btn-info"
+                                                                                (click)="ClickChangeName()">Edit</a></span>
+      </div>
+
+
+      <!-- CHARACTER NAME INPUT FORM CONTROL -->
+      <div class="form-group" *ngIf="nameEdit" (change)="changeName()">
+        <label for="inputName" class="pt-3">Character name</label>
+        <input type="text" class="form-control" id="inputName" placeholder="Character name" value="{{character.name}}"
+               formControlName="inputName" [ngClass]="{ 'is-invalid': submitted && f.inputName.errors }">
+        <div *ngIf="submitted && f.inputName.errors" class="invalid-feedback">
+          <div *ngIf="f.inputName.errors.required">Character name is required, please fill in your Character name!
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="!classEdit"><span>Class: {{class.name}}</span><span><a class="Button btn btn-info"
+                                                                         (click)="ClickChangeClass()">Edit</a></span>
+      </div>
+
+
+      <!-- CLASS SELECT FORM CONTROL -->
+      <div class="form-group" *ngIf="classEdit">
+        <label for="selectClass" class="pt-3">Class</label>
+        <select class="form-control" id="selectClass" formControlName="selectClass"
+                [ngClass]="{ 'is-invalid': submitted && f.selectClass.errors }" (change)="changeClass()">
+          <option *ngFor="let class of (classArray | async)" [value]="class.index">{{class.name}}</option>
+        </select>
+        <div *ngIf="submitted && f.selectClass.errors" class="invalid-feedback">
+          <div *ngIf="f.selectClass.errors.required">Class is required, please select a class!
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="!raceEdit"><span>Race: {{race.name}}</span><span><a class="Button btn btn-info"
+                                                                      (click)="ClickChangeRace()">Edit</a></span></div>
+
+      <!-- RACE SELECT FORM CONTROL -->
+      <div class="form-group" *ngIf="raceEdit">
+        <label for="selectRace" class="pt-3">Race</label>
+        <select class="form-control" id="selectRace" formControlName="selectRace" (change)="changeRace()"
+                [ngClass]="{ 'is-invalid': submitted && f.selectRace.errors }">
+          <option *ngFor="let race of (raceArray | async)" [value]="race.id">{{race.name}}</option>
+        </select>
+        <div *ngIf="submitted && f.selectRace.errors" class="invalid-feedback">
+          <div *ngIf="f.selectRace.errors.required">Race is required, please select a race!
+          </div>
+        </div>
+      </div>
+
+
+      <div *ngIf="!alignmentEdit"><span>Alignment: {{character.alignment}}</span><span><a class="Button btn btn-info"
+                                                                                          (click)="ClickChangeAlignment()">Edit</a></span>
+      </div>
+
+      <!-- ALIGNMENT SELECT FORM CONTROL -->
+      <div class="form-group" *ngIf="alignmentEdit">
+        <label for="selectAlignment" class="pt-3">Alignment</label>
+        <select class="form-control" id="selectAlignment" formControlName="selectAlignment" (change)="changeAlignment()"
+                [ngClass]="{ 'is-invalid': submitted && f.selectAlignment.errors }">
+          <option *ngFor="let alignment of alignmentArray" [value]="alignment">{{alignment}}</option>
+        </select>
+        <div *ngIf="submitted && f.selectAlignment.errors" class="invalid-feedback">
+          <div *ngIf="f.selectAlignment.errors.required">Alignment is required, please select a alignment!
+          </div>
+        </div>
+      </div>
+
+
+
+      <div *ngIf="!equipmentEdit"><span>Equipmnt: {{equipment.name}}</span><span><a class="Button btn btn-info"
+                                                                                    (click)="ClickChangeEquipment()">Edit</a></span>
+      </div>
+
+      <app-equipment *ngIf="equipmentEdit"></app-equipment>
+
+      <button type="submit" class="btn btn-primary mt-4">Save</button>
+      <a class="btn btn-secondary Button mt-4" (click)="EditOrCancel()">Cancel</a>
+    </form>
+  </div>
+
+
+  <div class="mt-4">
+    <a [routerLink]="" (click)="NaarList()">Back to character list.</a>
+  </div>
 </div>

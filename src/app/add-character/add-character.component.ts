@@ -29,7 +29,7 @@ export class AddCharacterComponent implements OnInit {
 
   characterForm: FormGroup;
 
-  availablePoints = 28;
+  availablePoints = 20;
   strPunten = 8;
   dexPunten = 8;
   conPunten = 8;
@@ -206,7 +206,7 @@ export class AddCharacterComponent implements OnInit {
     this.character.charisma = this.chaPunten;
 
     // playerID van lockal storage halen??
-    if (parseInt(localStorage.getItem('equipmentId')) != null) {
+    if (parseInt(localStorage.getItem('playerid')) != null) {
       this.character.playerid = parseInt(localStorage.getItem('playerid'));
     }
 
@@ -222,6 +222,10 @@ export class AddCharacterComponent implements OnInit {
     this._characterService.createCharacter(this.character).subscribe(r => {
       console.log(r);
     });
+
+    localStorage.removeItem('equipmentName');
+    localStorage.removeItem('equipmentid');
+    localStorage.removeItem('classId');
     this.router.navigate(['/list'], {replaceUrl: true});
   }
 }

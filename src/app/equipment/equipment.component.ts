@@ -10,10 +10,11 @@ import {Router} from '@angular/router';
   styleUrls: ['./equipment.component.css']
 })
 export class EquipmentComponent implements OnInit {
-  equipmentList: Observable<Equipment[]>
-  added = false;;
+  equipmentList: Observable<Equipment[]>;
+  added = false;
 
   constructor(private _equipmentService: EquipmentService, private router: Router) {
+
     this.equipmentList = this._equipmentService.getAllEquipment();
   }
 
@@ -34,7 +35,7 @@ export class EquipmentComponent implements OnInit {
     if (name != '' && name != null) {
       this.equipmentList = this._equipmentService.getEquipmentByCat(name);
     } else {
-      this.equipmentList= null;
+      this.equipmentList = null;
     }
 
   }
@@ -46,7 +47,7 @@ export class EquipmentComponent implements OnInit {
     this.added = true;
   }
 
-  Change(){
+  Change() {
     localStorage.removeItem('equipmentId');
     localStorage.removeItem('equipmentName');
     this.equipmentList = this._equipmentService.getEquipmentByCat('');
