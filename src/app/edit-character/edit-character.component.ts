@@ -164,6 +164,13 @@ export class EditCharacterComponent implements OnInit {
     console.log(this.character.alignment);
   }
 
+  DeleteChar(id: number) {
+    this._characterService.deleteCharacter(id).subscribe(r => {
+      console.log('in submit3');
+      this.router.navigate(['/list'], {replaceUrl: true});
+    });
+  }
+
   onSubmit() {
     // validerenvan het form
     this.submitted = true;
@@ -313,4 +320,6 @@ export class EditCharacterComponent implements OnInit {
       console.log(this.chaPunten);
     }
   }
+
+
 }

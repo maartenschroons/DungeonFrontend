@@ -25,4 +25,8 @@ export class CharacterService {
   public updateCharacter(character: Character) {
     return this.http.put<Character>('http://localhost:8010/character/update', character);
   }
+
+  public deleteCharacter(id: number) {
+    return this.http.delete<Character>('http://localhost:8010/character/delete/?id=' + id);
+  }
 }
