@@ -14,11 +14,16 @@ export class CharacterListComponent implements OnInit {
   characterList: Observable<Character[]>;
 
   constructor(private _characterService: CharacterService, private router: Router) {
+    this.leesCharacterList();
+  }
+
+  private leesCharacterList() {
     this.characterList = this._characterService.getAllCharactersByPlayerid(this.playerid);
     console.log(this.characterList);
   }
 
   ngOnInit() {
+    this.leesCharacterList();
   }
 
   EditCharacter(characterid: number){

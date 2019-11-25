@@ -203,12 +203,14 @@ export class EditCharacterComponent implements OnInit {
     console.log(this.character);
     localStorage.setItem('characterid', this.character.id.toString());
 
-    this._characterService.updateCharacter(this.character).subscribe();
+    this._characterService.updateCharacter(this.character).subscribe(r => {
+      console.log('in submit3');
+      this.router.navigate(['/list'], {replaceUrl: true});
+    });
 
       // this.router.navigate(['/editcharacter'], {replaceUrl: true});
-    console.log('in submit3');
 
-    this.router.navigate(['/list'], {replaceUrl: true});
+
 
   }
 
