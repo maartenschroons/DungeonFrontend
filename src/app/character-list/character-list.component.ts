@@ -3,6 +3,7 @@ import {CharacterService} from '../services/character.service';
 import {Observable} from 'rxjs';
 import {Character} from '../models/character.model';
 import {Router} from '@angular/router';
+import {AuthenticateServiceService} from '../services/authenticate-service.service';
 
 @Component({
   selector: 'app-character-list',
@@ -13,7 +14,7 @@ export class CharacterListComponent implements OnInit {
   playerid = 1;
   characterList: Observable<Character[]>;
 
-  constructor(private _characterService: CharacterService, private router: Router) {
+  constructor(private _characterService: CharacterService, private router: Router, private authService:AuthenticateServiceService) {
     this.leesCharacterList();
   }
 
@@ -23,6 +24,9 @@ export class CharacterListComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.authService.isLoggedIn() != true) {
+      this.router.navigate(['/login']);
+    }
     this.leesCharacterList();
   }
 

@@ -9,7 +9,6 @@ export class CharacterService {
   }
 
   public createCharacter(character: Character) {
-    console.log('er in');
     return this.http.post<Character>('http://localhost:8010/character/create', character);
 
   }

@@ -16,7 +16,6 @@ import {RegisterComponent} from './register/register.component';
 
 import {CharacterService} from './services/character.service';
 import { EditCharacterComponent } from './edit-character/edit-character.component';
-import {MatCardModule} from '@angular/material';
 
 
 
@@ -50,8 +49,7 @@ const appRoutes: Routes = ([
     BrowserModule,
     SharedModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes, {enableTracing: false}),
-    MatCardModule
+    RouterModule.forRoot(appRoutes, {enableTracing: false})
   ],
   providers: [
     CharacterService

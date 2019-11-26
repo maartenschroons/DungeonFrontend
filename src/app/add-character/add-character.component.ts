@@ -11,6 +11,7 @@ import {Class} from '../models/class.model';
 import {RaceService} from '../services/race.service';
 import {CharacterService} from '../services/character.service';
 import {Router} from '@angular/router';
+import {AuthenticateServiceService} from '../services/authenticate-service.service';
 
 @Component({
   selector: 'app-add-character',
@@ -48,12 +49,16 @@ export class AddCharacterComponent implements OnInit {
     private _classService: ClassService,
     private _characterService: CharacterService,
     private _raceService: RaceService,
-    private router: Router
+    private router: Router,
+    private authService:AuthenticateServiceService
   ) {
     this.fillVariables();
   }
 
   ngOnInit() {
+    if (this.authService.isLoggedIn() != true) {
+      this.router.navigate(['/login']);
+    }
     this.characterForm = this.fb.group({
       inputName: ['', Validators.required],
       selectClass: ['', Validators.required],

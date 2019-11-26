@@ -15,7 +15,7 @@ export class AuthenticateServiceService {
 
   authenticate(userLogin: UserLogin): Observable<Player> {
     console.log(userLogin);
-    return this._httpClient.post<Player>('http://localhost:8762/auth/', userLogin);
+    return this._httpClient.post<Player>('http://localhost:8020/auth/', userLogin);
 
 
   }

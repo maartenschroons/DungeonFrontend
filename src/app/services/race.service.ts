@@ -13,7 +13,7 @@ export class RaceService {
   constructor(private http: HttpClient) { }
 
   public getRaceById(id: String) {
-    return this.http.get<Character>('http://localhost:8010/race/id?id=' + id);
+    return this.http.get<Race>('http://localhost:8010/race/id?id=' + id);
   }
 
   getAllRaces(): Observable<Race[]>{
