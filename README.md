@@ -4,12 +4,13 @@ Dit is de frontend voor het Dungeons & Dragons project dat we in team maken voor
 In onze applicatie kan de gebruiker zijn eigen personage adhv ras,  uitrusting, persoonlijkheidskenmerken en klasse maken die geleverd worden door microservices.
 De frontend is gerealiseerd met behulp van [Angular](https://github.com/angular/angular-cli) version 8.1.1.
 
+# Algemeen
 
-##Thema
+## Thema
 Onze applicatie zal spelers van het spel Dungeons and Dragons de mogelijkheid geven om een overzicht te geven van de bestaande characters in het spel. We geven spelers ook de mogelijk om zelf een character aan te maken. zo kunnen ze makkeijk kiezen uit alle bestaande Classes, Races en Alignments.
 
 
-##Teamleden
+## Teamleden
 
 * Maarten Michiels
 * Maartens Schroons
@@ -87,7 +88,16 @@ wisdom
 charisma
 ```
 
-##Front-end
+## Race-controller
+![race-controller](https://dinvanwezemael.space/java/race-controller.png)
+
+## Player-controller
+![player-controller](https://dinvanwezemael.space/java/player-controller.png)
+
+## Character-controller
+![character-controller](https://dinvanwezemael.space/java/character-controller.png)
+
+## Front-end
 We hebben gebruik gemaakt van Angular om de font-end te realiseren, we hebben hiervoor gekozen omdat dit een zeer populair framework is en nog steeds aan het groeien is. Ook bied Angular de mogelijkheid om onze applicatie mobile te maken.
 
 ## Extra info
