@@ -11,6 +11,7 @@ import {Race} from '../models/race.model';
 import {Class} from '../models/class.model';
 import {Equipment} from '../models/equipment.model';
 import {Observable} from 'rxjs';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-edit-character',
@@ -54,7 +55,8 @@ export class EditCharacterComponent implements OnInit {
     private _classService: ClassService,
     private _characterService: CharacterService,
     private _raceService: RaceService,
-    private router: Router
+    private router: Router,
+    private appComponent: AppComponent
   ) {
     this.characterid = parseInt(localStorage.getItem('characterid'));
     localStorage.removeItem('characterid');
@@ -167,6 +169,7 @@ export class EditCharacterComponent implements OnInit {
   DeleteChar(id: number) {
     this._characterService.deleteCharacter(id).subscribe(r => {
       console.log('in submit3');
+      this.appComponent.setAlert("The character " + this.character.name +  " is deleted!", "danger");
       this.router.navigate(['/list'], {replaceUrl: true});
     });
   }
@@ -212,6 +215,7 @@ export class EditCharacterComponent implements OnInit {
 
     this._characterService.updateCharacter(this.character).subscribe(r => {
       console.log('in submit3');
+      this.appComponent.setAlert("The character " + this.character.name +  " is updated!", "success");
       this.router.navigate(['/list'], {replaceUrl: true});
     });
 

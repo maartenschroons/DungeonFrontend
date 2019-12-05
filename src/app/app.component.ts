@@ -14,6 +14,29 @@ export class AppComponent implements OnInit {
     console.log(this.huidigeGebruiker)
   }
 
+  alert = false;
+  color = "";
+  message;
+  interval
+  timeLeft: number = 7;
+
+   //alert weergeven
+   setAlert(message, color){
+    this.timeLeft = 7;
+    this.alert = true;
+    this.message = message;
+    this.color = color
+
+    this.interval = setInterval(() => {
+      if(this.timeLeft > 0) {
+        this.timeLeft--;
+      } else {
+        this.alert = false;
+        this.message = "";
+      }
+    },1000)
+  }
+
   ngOnInit() {
   }
 

@@ -1,4 +1,4 @@
-<div class="titel" class="container topcontainer" fxLayout="row" fxLayout.sm="column" fxLayoutAlign="center">
+<div class="titel" class="container topcontainer chapter-settings" fxLayout="row" fxLayout.sm="column" fxLayoutAlign="center">
     <div class="container">
         <h1>Equipment</h1>
         <input type="text" class="form-control" id="EquipmentName" placeholder="Equipment" #name>
@@ -26,7 +26,9 @@
     <div class="containerList" fxFlex="23%">{{equipment.equipment_category}}</div>
     <div class="containerList" fxFlex="23%">{{equipment.weight}}</div>
     <div class="containerList" fxFlex="26%">
-      <a *ngIf="!added" class=" btn btn-secondary Button"(click)="Add(equipment.index, equipment.name)">Equip</a>
+      <a *ngIf="!added" class=" btn btn-primary Button"(click)="Add(equipment.index, equipment.name)">Equip</a>
       <a *ngIf="added" class=" btn btn-secondary Button"(click)="Change()">Change</a>
     </div>
 </div>
+
+<div class="bottom"></div>

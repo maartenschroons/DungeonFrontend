@@ -12,6 +12,7 @@ import {RaceService} from '../services/race.service';
 import {CharacterService} from '../services/character.service';
 import {Router} from '@angular/router';
 import {AuthenticateServiceService} from '../services/authenticate-service.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-add-character',
@@ -50,7 +51,8 @@ export class AddCharacterComponent implements OnInit {
     private _characterService: CharacterService,
     private _raceService: RaceService,
     private router: Router,
-    private authService:AuthenticateServiceService
+    private authService:AuthenticateServiceService,
+    private appComponent: AppComponent
   ) {
     this.fillVariables();
   }
@@ -225,8 +227,10 @@ export class AddCharacterComponent implements OnInit {
     console.log(this.character);
 
     this._characterService.createCharacter(this.character).subscribe(r => {
-      console.log(r);
+      
     });
+
+    this.appComponent.setAlert("The character " + this.character.name +  " is created!", "success");
 
     localStorage.removeItem('equipmentName');
     localStorage.removeItem('equipmentid');

@@ -1,7 +1,17 @@
 <div class="container">
+  <br>
   <h1>list of characters</h1>
-  <div class="list-group" *ngFor="let character of (characterList | async)">
-    <p  class="list-group-item" (click)="EditCharacter(character.id)">{{character.name}}</p>
+ <br><br>
+<div *ngFor="let character of (characterList | async)">
+  <div class="card" (click)="EditCharacter(character.id)">
+    <div class="card-body">
+      <h5 class="card-title">{{character.name}}</h5>
+    </div>
   </div>
 </div>
+
+
+</div>
+
+
 

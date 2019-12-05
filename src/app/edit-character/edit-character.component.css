@@ -1,0 +1,11 @@
+.btn-block{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 20px;
+}
+
+.card{
+    margin-top: 20px;
+    transition: 0.3s ease-in-out;
+    border-radius: 15px;
+}

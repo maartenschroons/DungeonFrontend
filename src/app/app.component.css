@@ -5,3 +5,11 @@
   left: 0;
   right:0;
 }
+
+.alert-cust{
+  position: fixed;
+  top: 30px;
+  right: 20px;
+  width: 800px;
+  z-index: 9999!important;
+}

@@ -21,3 +21,9 @@
     </mat-sidenav-content>
   </mat-sidenav-container>
 </nav>
+
+<div *ngIf="alert" class="alert-cust container">
+    <div class="alert alert-{{color}} alert-dismissible fade show" role="alert">
+      {{message}}
+    </div>
+    </div>

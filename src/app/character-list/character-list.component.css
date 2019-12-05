@@ -1,0 +1,17 @@
+.card{
+    margin-top: 20px;
+    transition: 0.3s ease-in-out;
+    border-radius: 15px;
+    width: 800px;
+    box-shadow: 6px 6px 25px -9px rgba(0,0,0,0.3);
+}
+
+.card-title{
+    font-size: 45px;
+    font-weight: 800;
+}
+
+.card:hover{
+    cursor: pointer;
+    box-shadow: 6px 6px 25px -9px rgba(0,0,0,0.75);
+}
